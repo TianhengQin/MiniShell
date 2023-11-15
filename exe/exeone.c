@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 11:01:58 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/15 19:35:52 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/15 20:53:00 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void	run_exe(t_sh *sh, char **cs)
 			exit(127);
 		}
 		execve(pth, cs, sh->env);
+		free_sh(sh);
+		free2(cs);
 		perror("minishell");
 		exit(126);
 	}

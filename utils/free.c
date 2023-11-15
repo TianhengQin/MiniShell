@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 00:22:25 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/15 09:21:23 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/15 20:58:34 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,13 @@ void	free_cmd(char *cmd, char ***css, t_sh *sh)
 		free(sh->pip);
 		sh->pip = 0;
 	}
+}
+
+void	free_fail(t_sh *sh, char **cs)
+{
+	free_sh(sh);
+	free3(sh->iof);
+	free(sh->pip);
+	sh->pip = 0;
+	free2(cs);
 }
