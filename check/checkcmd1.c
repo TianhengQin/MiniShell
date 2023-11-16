@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   checkcmd1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/05 11:47:16 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/16 09:39:44 by tiqin            ###   ########.fr       */
+/*   Created: 2023/11/16 09:26:52 by tiqin             #+#    #+#             */
+/*   Updated: 2023/11/16 09:28:58 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-void	run_pwd(t_sh *sh, char **cs)
+int	ck_start(char *cmd)
 {
-	(void)cs;
-	// if (cs[1])
-	// 	return ;
-	fprint(1, "%s\n", sh->pwd);
-	sh->exit_c = 0;
+	if (cmd[0] == '|')
+	{
+		fprint(2, "minishell: syntax error near ");
+		fprint(2, "unexpected token `|'\n");
+		return (1);
+	}
+	return (0);
 }

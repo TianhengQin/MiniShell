@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 08:01:15 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/16 01:50:47 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/16 09:30:04 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,11 @@ int	check(char *s, char ***css, t_sh *sh)
 {
 	int	ck;
 
+	if (ck_start(s))
+	{
+		sh->exit_c = 258;
+		return (1);
+	}
 	if (!css[0])
 		return (1);
 	ck = ck_endl(s);

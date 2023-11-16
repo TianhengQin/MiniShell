@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 00:41:25 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/14 04:52:38 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/16 09:49:33 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	write_dolor(char *c, t_sh *sh, char *re, int *j)
 		write_exit(sh, re, j);
 		return (1);
 	}
-	len = 1;
+	len = 0;
 	while (is_aphnum(c[len]))
 		len++;
 	tmp = c[len];
@@ -102,7 +102,7 @@ char	*quo(t_sh *sh, char *c)
 	{
 		if (c[i] == '\'' || c[i] == '"')
 			isin_quo(c[i], &in_quo);
-		if (c[i] == '$' && in_quo != 1)
+		if (c[i] == '$' && in_quo != 1 && c[i + 1])
 			i += write_dolor(&c[i + 1], sh, re, &j);
 		else
 			re[j++] = c[i];

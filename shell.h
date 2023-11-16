@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 00:10:30 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/16 02:42:54 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/16 09:30:42 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ char		***all_cmd(t_sh *sh, char *s);
 char		***splt3(char ***css);
 //vaild cmd
 int			check(char *s, char ***css, t_sh *sh);
+int			ck_start(char *cmd);
 //exe
 void		exe_cmd(t_sh *sh, char **cs);
 void		exe_all(t_sh *sh, char ***css);

@@ -16,7 +16,7 @@ UTIL	= free ft_printf ft_split strjoin strjoin2 sutils sutils1 utils
 
 INIT	= set
 
-CHCK	= checkcmd
+CHCK	= checkcmd checkcmd1
 
 SRCS	= $(addsuffix .c, $(addprefix buildin/, $(BUIN))) \
 		$(addsuffix .c, $(addprefix init/, $(INIT))) \
