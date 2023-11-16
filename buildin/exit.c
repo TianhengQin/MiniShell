@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 01:59:06 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/15 11:58:59 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/16 21:48:03 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	run_exit(t_sh *sh, char **cs)
 	if (cs[1] && cs[2])
 	{
 		fprint(2, "exit: too many arguments\n");
+		sh->exit_c = 1;
 		return ;
 	}
 	if (cs[1] && check_long(cs[1]))
