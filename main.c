@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 03:31:37 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/16 01:42:23 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/16 06:13:21 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,6 @@ int	main(int argi, char **argv, char **env)
 	argi = 0;
 	argv = 0;
 	exit = all(env);
-	system("leaks minishell");
+	// system("leaks minishell");
 	return (exit);
 }
