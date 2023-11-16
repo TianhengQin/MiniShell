@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 02:30:21 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/14 02:46:29 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/16 18:57:39 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 void	write_quo(char c, char *re, int *j, int in_quo)
 {
-	if (in_quo == 0)
+	if (in_quo == 0 || c == -1)
 		return ;
 	if (in_quo == 1 && c == '"')
 		re[(*j)++] = c;
 	else if (in_quo == 2 && c == '\'')
+		re[(*j)++] = c;
+	else if (in_quo < 0)
 		re[(*j)++] = c;
 }
 
@@ -33,7 +35,7 @@ char	*dequo(char *re)
 	in_quo = 0;
 	while (re[++i])
 	{
-		if (re[i] == '\'' || re[i] == '"')
+		if (re[i] == '\'' || re[i] == '"' || re[i] < 0)
 		{
 			write_quo(re[i], re, &j, in_quo);
 			isin_quo(re[i], &in_quo);

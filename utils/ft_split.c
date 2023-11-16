@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 00:50:28 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/16 01:42:00 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/16 19:10:32 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ size_t	skip_quo(char *dup, size_t i)
 	{
 		i++;
 		while (dup[i] && dup[i] != 34)
+			i++;
+	}
+	else if (dup[i] == -1)
+	{
+		i++;
+		while (dup[i] && dup[i] != -1)
 			i++;
 	}
 	if (dup[i])
@@ -45,7 +51,7 @@ size_t	cut(char *dup, char *set)
 		count++;
 	while (dup[i])
 	{
-		if (dup[i] == 39 || dup[i] == 34)
+		if (dup[i] == 39 || dup[i] == 34 || dup[i] == -1)
 			i = skip_quo(dup, i);
 		if (is_in(set, dup[i]))
 		{

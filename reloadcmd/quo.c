@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 00:41:25 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/16 09:49:33 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/16 20:32:19 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ void	isin_quo(char c, int *in_quo)
 		else if (*in_quo == 2)
 			*in_quo = 0;
 	}
+	else if (c == -1)
+	{
+		if (*in_quo == 0)
+			*in_quo = -3;
+		else
+			*in_quo = -(*in_quo);
+	}
 }
 
 void	write_exit(t_sh *sh, char *re, int *j)
@@ -48,14 +55,17 @@ void	write_env(char *re, int *j, char *ev)
 	char	*tmp;
 	int		i;
 
+	re[(*j)++] = -1;
 	i = 0;
 	tmp = sdup(ev);
-	tmp = dequo(tmp);
+	// tmp = dequo(tmp);
+	// fprint(2, "%s\n", tmp);
 	while (tmp[i])
 	{
 		re[(*j)++] = tmp[i++];
 	}
 	free(tmp);
+	re[(*j)++] = -1;
 }
 
 int	write_dolor(char *c, t_sh *sh, char *re, int *j)
@@ -102,7 +112,9 @@ char	*quo(t_sh *sh, char *c)
 	{
 		if (c[i] == '\'' || c[i] == '"')
 			isin_quo(c[i], &in_quo);
-		if (c[i] == '$' && in_quo != 1 && c[i + 1])
+		if (c[i] == '$' && in_quo != 1
+			&& (is_apha(c[i + 1]) || c[i + 1] == '?'
+				|| ((c[i + 1] == '"' || c[i + 1] == '\'') && !in_quo)))
 			i += write_dolor(&c[i + 1], sh, re, &j);
 		else
 			re[j++] = c[i];
@@ -110,5 +122,6 @@ char	*quo(t_sh *sh, char *c)
 	re[j] = 0;
 	free(c);
 	re = sdupf(re);
+	// fprint(2, "%s\n", re);
 	return (re);
 }
