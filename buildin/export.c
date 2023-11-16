@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 22:25:40 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/14 22:01:25 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/16 02:32:05 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,19 +108,25 @@ char	*prase_exp(char *cs)
 void	run_export(t_sh *sh, char **cs)
 {
 	char	*tofind;
+	int		i;
 
+	sh->exit_c = 0;
 	if (!cs[1])
 	{
 		show_exp(sh);
 		return ;
 	}
-	if (valid_exp(cs[1]))
+	i = 0;
+	while (cs[++i])
 	{
-		fprint(2, "export: `%s': not a valid identifier\n", cs[1]);
-		sh->exit_c = 1;
-		return ;
+		if (valid_exp(cs[i]))
+		{
+			fprint(2, "export: `%s': not a valid identifier\n", cs[i]);
+			sh->exit_c = 1;
+			continue ;
+		}
+		tofind = prase_exp(cs[i]);
+		env_append(sh, tofind);
+		free(tofind);
 	}
-	tofind = prase_exp(cs[1]);
-	env_append(sh, tofind);
-	free(tofind);
 }

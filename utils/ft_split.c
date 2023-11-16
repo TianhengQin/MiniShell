@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 00:50:28 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/14 06:19:20 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/16 01:42:00 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ size_t	skip_quo(char *dup, size_t i)
 		return (i - 1);
 }
 
-size_t	cut(char *dup, char set)
+size_t	cut(char *dup, char *set)
 {
 	size_t	i;
 	size_t	count;
@@ -41,16 +41,16 @@ size_t	cut(char *dup, char set)
 	count = 0;
 	if (dup[0] == 0)
 		return (0);
-	if (dup[0] != set)
+	if (is_in(set, dup[0]) == 0)
 		count++;
 	while (dup[i])
 	{
 		if (dup[i] == 39 || dup[i] == 34)
 			i = skip_quo(dup, i);
-		if (dup[i] == set)
+		if (is_in(set, dup[i]))
 		{
 			dup[i] = 0;
-			if (dup[i + 1] && dup[i + 1] != set)
+			if (dup[i + 1] && is_in(set, dup[i + 1]) == 0)
 				count++;
 		}
 		i++;
@@ -97,7 +97,7 @@ void	free_re(char **re, int tot)
 	free(re);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char *c)
 {
 	char		*dup;
 	char		**re;

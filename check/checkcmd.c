@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 08:01:15 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/15 12:09:05 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/16 01:50:47 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	ck_mid(char ***css, char ***iof, int ck)
 		{
 			return (1);
 		}
-		if (css[i][0] == 0 && iof[i][0] == 0)
+		if (css[i][0] == 0 && iof[i][0] == 0 && css[i + 1])
 		{
 			fprint(2, "minishell: syntax error near unexpected token `|'\n");
 			return (1);
@@ -83,14 +83,8 @@ int	check(char *s, char ***css, t_sh *sh)
 {
 	int	ck;
 
-	if (!css[0] || !css[0][0])
+	if (!css[0])
 		return (1);
-	if (!css[0][0][0])
-	{
-		fprint(2, "minishell: : command not found\n");
-		sh->exit_c = 127;
-		return (1);
-	}
 	ck = ck_endl(s);
 	if (ck_mid(css, sh->iof, ck))
 	{

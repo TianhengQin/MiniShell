@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 10:38:51 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/14 21:59:43 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/16 02:48:55 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ int	valid_unset(char *s)
 {
 	int	i;
 
-	i = -1;
+	if (is_apha(s[0]) == 0)
+		return (1);
+	i = 0;
 	while (s[++i])
 	{
 		if (s[i] == '_')
@@ -35,23 +37,27 @@ int	valid_unset(char *s)
 void	run_unset(t_sh *sh, char **cs)
 {
 	int		i;
+	int		j;
 
+	sh->exit_c = 0;
 	if (!cs[1])
 	{
 		fprint(2, "unset: not enough arguments\n");
 		sh->exit_c = 1;
 		return ;
 	}
-	if (valid_unset(cs[1]))
+	j = 0;
+	while (cs[++j])
 	{
-		fprint(2, "unset: `%s': not a valid identifier\n", cs[1]);
-		sh->exit_c = 1;
-		return ;
+		if (valid_unset(cs[j]))
+		{
+			fprint(2, "unset: `%s': not a valid identifier\n", cs[j]);
+			sh->exit_c = 1;
+			continue ;
+		}
+		cs[j] = sjoinf1(cs[j], "=");
+		i = find(sh->env, cs[j]);
+		if (i >= 0)
+			env_delete(sh, i);
 	}
-	cs[1] = sjoinf1(cs[1], "=");
-	i = find(sh->env, cs[1]);
-	sh->exit_c = 0;
-	if (i < 0)
-		return ;
-	env_delete(sh, i);
 }

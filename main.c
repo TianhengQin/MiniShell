@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 03:31:37 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/15 11:50:41 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/16 01:42:23 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	run_shell(t_sh *shell)
 			add_history(cmd);
 		css = all_cmd(shell, cmd);
 				// fprint(2, "cmd:%s\n", cmd);
-		if (!all_sp(cmd) && !check(cmd, css, shell))
+		if (!check(cmd, css, shell))
 		{
 			// printf("kein problem\n");
 			// printf("---------------------------\n");

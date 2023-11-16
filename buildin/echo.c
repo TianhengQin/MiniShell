@@ -6,11 +6,29 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 03:44:47 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/14 22:02:39 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/16 02:11:54 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+char	opt_n(char *c)
+{
+	int	i;
+
+	if (c[0] != '-')
+		return (0);
+	if (c[1] != 'n')
+		return (0);
+	i = 2;
+	while (c[i])
+	{
+		if (c[i] != 'n')
+			return (0);
+		i++;
+	}
+	return ('n');
+}
 
 void	echo(char **cs)
 {
@@ -33,7 +51,7 @@ void	echo_n(char **cs)
 	int	j;
 
 	i = 2;
-	while (cs[i] && sncmp(cs[i], "-n", 3) == 0)
+	while (cs[i] && opt_n(cs[i]))
 		i++;
 	j = i;
 	while (cs[i])
@@ -50,7 +68,7 @@ void	run_echo(t_sh *sh, char **cs)
 	(void)sh;
 	if (!cs[1])
 		fprint(1, "\n");
-	else if (sncmp(cs[1], "-n", 3))
+	else if (!opt_n(cs[1]))
 		echo(cs);
 	else
 		echo_n(cs);

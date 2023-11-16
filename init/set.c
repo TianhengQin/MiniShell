@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 01:30:12 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/15 09:21:11 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/16 01:24:56 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,13 @@ void	set_env(t_sh *shell)
 	i = find(shell->env, "PWD=");
 	shell->pwd = sdup(shell->env[i] + 4);
 	i = find(shell->env, "OLDPWD=");
-	shell->odpwd = sdup(shell->env[i] + 7);
+	if (i >= 0)
+		shell->odpwd = sdup(shell->env[i] + 7);
+	else
+		shell->odpwd = sdup(shell->env[find(shell->env, "PWD=")] + 4);
 	shell->user = sdup(shell->env[find(shell->env, "USER=")] + 5);
 	shell->home = shell->env[find(shell->env, "HOME=")] + 5;
-	shell->evpth = ft_split(shell->env[find(shell->env, "PATH=")] + 5, ':');
+	shell->evpth = ft_split(shell->env[find(shell->env, "PATH=")] + 5, ":");
 	shell->runing = 1;
 	if (find(shell->env, "SHLVL=") >= 0)
 		shell->env[find(shell->env, "SHLVL=")][6]++;
@@ -108,7 +111,7 @@ void	set_envpth(t_sh *sh)
 		free2(sh->evpth);
 	if (find(sh->env, "PATH=") >= 0)
 	{
-		sh->evpth = ft_split(sh->env[find(sh->env, "PATH=")] + 5, ':');
+		sh->evpth = ft_split(sh->env[find(sh->env, "PATH=")] + 5, ":");
 	}
 	else
 		sh->evpth = 0;

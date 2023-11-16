@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 00:09:05 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/15 19:47:03 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/16 01:38:22 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ char	***splt_cmd(t_sh *sh, char *s)
 	char	***css;
 	int		i;
 
-	cs = ft_split(s, '|');
+	cs = ft_split(s, "|");
 	if (!cs)
 		return (0);
 	i = len2(cs);
@@ -76,7 +76,7 @@ char	***splt_cmd(t_sh *sh, char *s)
 	ld_io3(sh, cs);
 	css[i] = 0;
 	while (--i >= 0)
-		css[i] = ft_split(cs[i], ' ');
+		css[i] = ft_split(cs[i], " \t\v\f\r\n");
 	free2(cs);
 	return (css);
 }
@@ -134,10 +134,10 @@ char	***all_cmd(t_sh *sh, char *s)
 	re = splt3(re);
 	re = dequo3(re);
 	sh->iof = dequo3(sh->iof);
-	// printf("---------------------------\n");
-	// prnt(re);
-	// printf("---------------------------\n");
-	// prnt(sh->iof);
-	// printf("---------------------------\n");
+	printf("---------------------------\n");
+	prnt(re);
+	printf("---------------------------\n");
+	prnt(sh->iof);
+	printf("---------------------------\n");
 	return (re);
 }

@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 08:57:04 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/14 05:35:52 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/16 01:39:55 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	**splt2(char **cs)
 	char	*tot;
 
 	tot = sjoin2(len2(cs), cs, " ");
-	re = ft_split(tot, ' ');
+	re = ft_split(tot, " \t\v\f\r\n");
 	free(tot);
 	free2(cs);
 	return (re);

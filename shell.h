@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 00:10:30 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/15 20:59:25 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/16 02:42:54 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,15 @@ char		*sjoin2(int size, char **strs, char *sep);
 size_t		len(const char *str);
 size_t		len2(char **str);
 size_t		len3(char ***css);
-char		**ft_split(char const *s, char c);
+char		**ft_split(char const *s, char *c);
 char		*sdup(const char *src);
 char		*sdupf(const char *src);
 int			sncmp(const char *s1, const char *s2, int n);
 long long	ati(const char *str);
 int			is_aphnum(char c);
+int			is_apha(char c);
 int			all_sp(char *s);
+char		is_in(char *s, char c);
 //init
 void		set_env(t_sh *shell);
 void		set_env_r(t_sh *shell);

@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 01:04:51 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/14 10:53:05 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/16 01:38:05 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,9 +132,10 @@ int	write_io(char *re, char *s, int *in_q, int *j)
 
 	i = 0;
 	write_hed(re, s, &i, j);
-	while (s[i] == ' ')
+	while (is_in(" \t\v\f\r\n", s[i]))
 		i++;
-	while (s[i] && !(((s[i] == '<' || s[i] == '>') && !*in_q) || s[i] == ' '))
+	while (s[i]
+		&& !((is_in("<>", s[i]) && !*in_q) || is_in(" \t\v\f\r\n", s[i])))
 	{
 		re[(*j)++] = s[i];
 		if (s[i] == '"' || s[i] == '\'')
@@ -181,7 +182,7 @@ char	**ld_io(char *s)
 
 	io = rd_io(s);
 	// fprint(2, "%s|\n", s);
-	re = ft_split(io, ' ');
+	re = ft_split(io, " ");
 	free(io);
 	return (re);
 }
