@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 00:22:25 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/15 20:58:34 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/17 03:35:30 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	free_sh(t_sh *sh)
 	free(sh->odpwd);
 	free(sh->pwd);
 	free(sh->user);
+	free(sh->home);
 }
 
 void	free_cmd(char *cmd, char ***css, t_sh *sh)

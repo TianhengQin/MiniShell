@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 00:41:25 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/16 20:32:19 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/17 02:06:22 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,17 @@ void	write_env(char *re, int *j, char *ev)
 	char	*tmp;
 	int		i;
 
-	re[(*j)++] = -1;
+	// re[(*j)++] = -1;
 	i = 0;
 	tmp = sdup(ev);
 	// tmp = dequo(tmp);
 	// fprint(2, "%s\n", tmp);
 	while (tmp[i])
 	{
-		re[(*j)++] = tmp[i++];
+		re[(*j)++] = save_quo(tmp[i++]);
 	}
 	free(tmp);
-	re[(*j)++] = -1;
+	// re[(*j)++] = -1;
 }
 
 int	write_dolor(char *c, t_sh *sh, char *re, int *j)

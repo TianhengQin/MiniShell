@@ -6,7 +6,7 @@ RDIR	= io resetio heredoc
 
 PIPE	= setpip
 
-RLOD	= dequo quo loadio
+RLOD	= dequo quo quo1 loadio
 
 SIG		= signal signal1
 

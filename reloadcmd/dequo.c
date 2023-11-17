@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 02:30:21 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/16 18:57:39 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/17 02:06:48 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ char	*dequo(char *re)
 	in_quo = 0;
 	while (re[++i])
 	{
-		if (re[i] == '\'' || re[i] == '"' || re[i] < 0)
+		if (re[i] == '\'' || re[i] == '"')
 		{
 			write_quo(re[i], re, &j, in_quo);
 			isin_quo(re[i], &in_quo);
 		}
 		else
-			re[j++] = re[i];
+			re[j++] = load_quo(re[i]);
 	}
 	re[j] = 0;
 	return (re);

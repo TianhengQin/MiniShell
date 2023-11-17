@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 01:30:12 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/16 01:24:56 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/17 03:34:42 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	set_env(t_sh *shell)
 	else
 		shell->odpwd = sdup(shell->env[find(shell->env, "PWD=")] + 4);
 	shell->user = sdup(shell->env[find(shell->env, "USER=")] + 5);
-	shell->home = shell->env[find(shell->env, "HOME=")] + 5;
+	shell->home = sdup(shell->env[find(shell->env, "HOME=")] + 5);
 	shell->evpth = ft_split(shell->env[find(shell->env, "PATH=")] + 5, ":");
 	shell->runing = 1;
 	if (find(shell->env, "SHLVL=") >= 0)

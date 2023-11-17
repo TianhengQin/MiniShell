@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 01:59:06 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/16 21:48:03 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/16 23:58:07 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,18 +83,22 @@ int	check_long(char *s)
 
 void	run_exit(t_sh *sh, char **cs)
 {
-	if (cs[1] && cs[2])
+	if (cs[1])
+		cs[1] = trm_sp(cs[1]);
+	if (cs[1] && check_long(cs[1]))
+	{
+		fprint(2, "exit: %s: numeric argument required\n", cs[1]);
+		sh->exit_c = 255;
+		sh->runing = 0;
+		return ;
+	}
+	if (cs[1] && !check_long(cs[1]) && cs[2])
 	{
 		fprint(2, "exit: too many arguments\n");
 		sh->exit_c = 1;
 		return ;
 	}
-	if (cs[1] && check_long(cs[1]))
-	{
-		fprint(2, "exit: %s: numeric argument required\n", cs[1]);
-		sh->exit_c = 255;
-	}
-	else if (cs[1])
+	if (cs[1])
 	{
 		sh->exit_c = ati(cs[1]);
 	}

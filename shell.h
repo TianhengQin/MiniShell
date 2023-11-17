@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 00:10:30 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/16 09:30:42 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/17 02:01:57 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int			is_aphnum(char c);
 int			is_apha(char c);
 int			all_sp(char *s);
 char		is_in(char *s, char c);
+char		*trm_sp(char *s);
 //init
 void		set_env(t_sh *shell);
 void		set_env_r(t_sh *shell);
@@ -93,6 +94,8 @@ char		***dequo3(char ***re);
 void		isin_quo(char c, int *in_quo);
 void		write_quo(char c, char *re, int *j, int in_quo);
 int			write_dolor(char *c, t_sh *sh, char *re, int *j);
+char		save_quo(char c);
+char		load_quo(char c);
 //prase io
 char		is_io(char *s);
 void		ld_io3(t_sh *sh, char **cs);
