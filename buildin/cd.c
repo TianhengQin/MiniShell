@@ -1,16 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   buin_cd.c                                          :+:      :+:    :+:   */
+/*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 11:26:10 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/11 00:29:44 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/17 04:42:37 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+void	set_pwd(t_sh *sh)
+{
+	char	*dir;
+
+	if (sh->pwd)
+		free(sh->pwd);
+	dir = malloc(1024);
+	if (!dir)
+		return ;
+	getcwd(dir, 1024);
+	sh->pwd = sdup(dir);
+	free(dir);
+}
 
 int	go_to(t_sh *sh, char *cs)
 {
@@ -34,9 +48,7 @@ int	go_to(t_sh *sh, char *cs)
 		sh->exit_c = 1;
 		return (1);
 	}
-	free(sh->pwd);
-	getcwd(dir, len(dir));
-	sh->pwd = sdup(dir);
+	set_pwd(sh);
 	free(dir);
 	return (0);
 }

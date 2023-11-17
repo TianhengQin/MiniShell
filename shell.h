@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 00:10:30 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/17 02:01:57 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/17 04:34:54 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,13 @@ char		*trm_sp(char *s);
 //init
 void		set_env(t_sh *shell);
 void		set_env_r(t_sh *shell);
+void		set_no_env(t_sh *sh);
 void		set_envpth(t_sh *sh);
 void		set_signal_b(void);
 void		set_signal_a(void);
 void		rm_signal(void);
 int			find(char **str, char *s);
+void		set_pwd(t_sh *sh);
 //prase quo
 char		*dequo(char *re);
 char		*quo(t_sh *sh, char *c);

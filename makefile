@@ -14,7 +14,7 @@ SPLT	= splitcmd eachcmd
 
 UTIL	= free ft_printf ft_split strjoin strjoin2 sutils sutils1 utils
 
-INIT	= set
+INIT	= set setnoenv
 
 CHCK	= checkcmd checkcmd1
 

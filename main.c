@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 03:31:37 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/17 00:42:32 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/17 04:43:31 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,12 @@ int	all(char **env)
 	t_sh	sh;
 
 	sh.env = env;
-	set_env(&sh);
+	if (env[0])
+		set_env(&sh);
+	else
+	{
+		set_no_env(&sh);
+	}
 	run_shell(&sh);
 	free_sh(&sh);
 	return (sh.exit_c);
