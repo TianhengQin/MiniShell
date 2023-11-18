@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 16:40:34 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/15 06:30:27 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/18 10:33:36 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,11 @@ void	ctrl_c(int sig)
 	g_s = sig - 129;
 }
 
-void	sig_newline(int sig)
-{
-	rl_on_new_line();
-	write(1, "\n", 1);
-	g_s = sig;
-}
+// void	sig_newline(int sig)
+// {
+// 	write(1, "\n", 1);
+// 	g_s = sig;
+// }
 
 void	set_signal_b(void)
 {
@@ -40,19 +39,19 @@ void	set_signal_b(void)
 	sigaction(SIGQUIT, &sb, NULL);
 }
 
-void	sig_quit(int sig)
-{
-	fprint(2, "Quit: %d\n", sig);
-	g_s = sig;
-}
+// void	sig_quit(int sig)
+// {
+// 	fprint(2, "Quit: %d\n", sig);
+// 	g_s = sig;
+// }
 
 void	set_signal_a(void)
 {
 	struct sigaction	sa;
 	struct sigaction	sb;
 
-	sa.sa_handler = sig_newline;
-	sb.sa_handler = sig_quit;
+	sa.sa_handler = SIG_IGN;
+	sb.sa_handler = SIG_IGN;
 	sigaction(SIGINT, &sa, NULL);
 	sigaction(SIGQUIT, &sb, NULL);
 }

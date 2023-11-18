@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 01:22:58 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/15 20:57:30 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/18 10:39:11 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	one_fork(t_sh *sh, char **cs, int i, int len)
 		fprint(2, "Error creating process\n");
 	else if (pid == 0)
 	{
+		set_signal_exe();
 		close_pip(sh, i);
 		if (i > 0)
 		{

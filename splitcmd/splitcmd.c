@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 00:09:05 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/16 06:11:53 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/18 10:46:21 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,22 +107,22 @@ char	***quo3(t_sh *sh, char ***css)
 	return (css);
 }
 
-void	prnt(char ***css)
-{
-	int i = 0;
-	int j = 0;
-	while (css[i])
-	{
-		j = 0;
-		while (css[i][j])
-		{
-			printf("[%s]", css[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
-}
+// void	prnt(char ***css)
+// {
+// 	int i = 0;
+// 	int j = 0;
+// 	while (css[i])
+// 	{
+// 		j = 0;
+// 		while (css[i][j])
+// 		{
+// 			printf("[%s]", css[i][j]);
+// 			j++;
+// 		}
+// 		printf("\n");
+// 		i++;
+// 	}
+// }
 
 char	***all_cmd(t_sh *sh, char *s)
 {
@@ -134,10 +134,5 @@ char	***all_cmd(t_sh *sh, char *s)
 	re = splt3(re);
 	re = dequo3(re);
 	sh->iof = dequo3(sh->iof);
-	// printf("---------------------------\n");
-	// prnt(re);
-	// printf("---------------------------\n");
-	// prnt(sh->iof);
-	// printf("---------------------------\n");
 	return (re);
 }

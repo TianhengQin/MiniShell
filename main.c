@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 03:31:37 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/17 04:43:31 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/18 10:44:05 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,17 +61,10 @@ void	run_shell(t_sh *shell)
 		if (cmd[0])
 			add_history(cmd);
 		css = all_cmd(shell, cmd);
-				// fprint(2, "cmd:%s\n", cmd);
 		if (!check(cmd, css, shell))
-		{
-			// printf("kein problem\n");
-			// printf("---------------------------\n");
 			exe_all(shell, css);
-		}
-		rcv_sig(shell);
 		set_envpth(shell);
 		free_cmd(cmd, css, shell);
-			// fprint(2, "exit\n");
 	}
 	printf("\n[Process completed]\n\n");
 }
@@ -84,9 +77,7 @@ int	all(char **env)
 	if (env[0])
 		set_env(&sh);
 	else
-	{
 		set_no_env(&sh);
-	}
 	run_shell(&sh);
 	free_sh(&sh);
 	return (sh.exit_c);
@@ -99,6 +90,6 @@ int	main(int argi, char **argv, char **env)
 	argi = 0;
 	argv = 0;
 	exit = all(env);
-	system("leaks minishell");
+	// system("leaks minishell");
 	return (exit);
 }

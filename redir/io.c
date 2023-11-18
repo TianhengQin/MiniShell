@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 01:41:56 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/17 05:30:35 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/18 10:44:58 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	redir_o(t_sh *sh, char *io)
 	}
 	dup2(out, 1);
 	close(out);
-	// sh->exit_c = 0;
 }
 
 void	redir_i(t_sh *sh, char *io)
@@ -50,7 +49,6 @@ void	redir_i(t_sh *sh, char *io)
 	}
 	dup2(in, 0);
 	close(in);
-	// sh->exit_c = 0;
 }
 
 void	redir(t_sh *sh, char **io)

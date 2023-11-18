@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 11:01:58 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/17 05:27:42 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/18 10:34:16 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	run_exe(t_sh *sh, char **cs)
 	m_pid = fork();
 	if (m_pid == 0)
 	{
+		set_signal_exe();
 		pth = get_pth(sh->pwd, sh->evpth, cs[0]);
 		if (!pth)
 		{
@@ -73,7 +74,7 @@ void	run_exe(t_sh *sh, char **cs)
 		exit(126);
 	}
 	waitpid(m_pid, &ext, 0);
-	sh->exit_c = ext / 256;
+	sh->exit_c = error_code(ext);
 }
 
 char	is_buin(char *c)

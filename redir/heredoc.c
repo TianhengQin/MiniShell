@@ -6,7 +6,7 @@
 /*   By: tiqin <tiqin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 19:24:35 by tiqin             #+#    #+#             */
-/*   Updated: 2023/11/16 02:47:22 by tiqin            ###   ########.fr       */
+/*   Updated: 2023/11/18 10:44:44 by tiqin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,8 @@ void	crt_hirdoc(t_sh *sh)
 		j = -1;
 		while (sh->iof[i][++j])
 		{
-			// fprint(2, "%s\n", sh->iof[i][j]);
 			if (sh->iof[i][j][0] == '2' && sh->iof[i][j][1] == '<')
 			{
-				// fprint(2, "oneheredoc\n");
 				hir_doc(sh, &sh->iof[i][j][sh->iof[i][j][0] - 47], 'c');
 			}
 		}
