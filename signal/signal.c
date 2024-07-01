@@ -16,7 +16,7 @@ void	ctrl_c(int sig)
 {
 	write(1, "\n", 1);
 	rl_on_new_line();
-	rl_replace_line("", 0);
+	// rl_replace_line("", 0);
 	rl_redisplay();
 	g_s = sig - 129;
 }
@@ -32,7 +32,7 @@ void	set_signal_b(void)
 	struct sigaction	sa;
 	struct sigaction	sb;
 
-	rm_signal();
+	// rm_signal();
 	sa.sa_handler = ctrl_c;
 	sb.sa_handler = SIG_IGN;
 	sigaction(SIGINT, &sa, NULL);

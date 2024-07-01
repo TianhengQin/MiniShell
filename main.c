@@ -55,7 +55,7 @@ void	run_shell(t_sh *shell)
 		cmd = readline(p);
 		rcv_sig(shell);
 		free(p);
-		set_signal_a();
+		// set_signal_a();
 		if (!cmd)
 			break ;
 		if (cmd[0])
@@ -87,8 +87,8 @@ int	main(int argi, char **argv, char **env)
 {
 	int	exit;
 
-	argi = 0;
-	argv = 0;
+	(void)argi;
+	(void)argv;
 	exit = all(env);
 	// system("leaks minishell");
 	return (exit);

@@ -23,6 +23,8 @@ int	intmin(char *s)
 		i++;
 	if (i < 20)
 		return (0);
+	if (i > 20)
+		return (1);
 	if (sncmp(s, imin, 20) > 0)
 		return (1);
 	return (0);
@@ -39,6 +41,8 @@ int	intmaxp(char *s)
 		i++;
 	if (i < 20)
 		return (0);
+	if (i > 20)
+		return (1);
 	if (sncmp(s, imin, 20) > 0)
 		return (1);
 	return (0);
@@ -55,6 +59,8 @@ int	intmax(char *s)
 		i++;
 	if (i < 19)
 		return (0);
+	if (i > 19)
+		return (1);
 	if (sncmp(s, imin, 19) > 0)
 		return (1);
 	return (0);

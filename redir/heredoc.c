@@ -20,6 +20,11 @@ void	send_line(char *cs, int fd)
 	while (1)
 	{
 		line = readline("heredoc> ");
+		if (!line)
+		{
+			write(1,"\n",1);
+			break;
+		}
 		endl = sjoin(line, "\n");
 		if (sncmp(line, cs, 2147483647) == 0)
 		{
